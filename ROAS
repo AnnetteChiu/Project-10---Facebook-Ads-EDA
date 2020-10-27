@@ -1,0 +1,14 @@
+cam_df['totConv'] = cam_df.loc[:,'Total_Conversion'] + cam_df.loc[:,'Approved_Conversion']
+
+cam_df['conVal'] = cam_df['Total_Conversion']*5 # revnue by Total_Conversion
+cam_df['appConVal'] = cam_df['Approved_Conversion'] * 100 # revnue by Approved_Conversion
+
+cam_df['totConvVal'] = cam_df['conVal'] + cam_df['appConVal']  # total revnue
+
+cam_df['costPerCon'] = round(cam_df['Spent'] / cam_df['totConv'], 2) # Cost Per Conversion, combines CPC and CR metrics.
+
+cam_df['ROAS'] = round(cam_df['totConvVal'] / cam_df['Spent'], 2) #revenue returned as a percentage of the advertising spend.
+
+cam_df['CPM'] = round((cam_df['Spent'] / cam_df['Impressions']) * 1000, 2) #cost per thousand impression
+
+cam_df.head()
